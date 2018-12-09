@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".HotelActivity" />
         <activity android:name=".EventActivity" />
-        <activity android:name=".TransportationActivity"></activity>
+        <activity android:name=".TransportationActivity" />
+        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>
