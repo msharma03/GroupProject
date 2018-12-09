@@ -1,13 +1,13 @@
 package com.example.ms.groupproject;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class TransportationActivity extends AppCompatActivity {
+public class EventActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transportation);
+        setContentView(R.layout.activity_event);
     }
 }
