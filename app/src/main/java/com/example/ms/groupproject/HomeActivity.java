@@ -14,17 +14,17 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
     }
 
+        // menu created below
 
-
-    // menu created below
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater optionsMenuInflater = getMenuInflater();
-        optionsMenuInflater.inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            MenuInflater optionsMenuInflater = getMenuInflater();
+            optionsMenuInflater.inflate(R.menu.dropdown_menu,menu);
+            return super.onCreateOptionsMenu(menu);
+        }
         @Override
         public boolean onOptionsItemSelected (MenuItem item){
             switch (item.getItemId()) {
@@ -50,7 +50,5 @@ public class HomeActivity extends Activity {
                 default:
                     return false;
             }
-
-
         }
     }
