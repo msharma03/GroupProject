@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,17 +18,24 @@ public class HomeActivity extends Activity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
+
+
         // menu created below
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            MenuInflater optionsMenuInflater = getMenuInflater();
-            optionsMenuInflater.inflate(R.menu.dropdown_menu,menu);
-            return super.onCreateOptionsMenu(menu);
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater optionsMenuInflater = getMenuInflater();
+        optionsMenuInflater.inflate(R.menu.dropdown_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
         @Override
         public boolean onOptionsItemSelected (MenuItem item){
-            switch (item.getItemId()) {
+        switch (item.getItemId()){
                 case R.id.menuitem_home:
                     return true;
                 case R.id.menuitem_hotel:
@@ -51,4 +59,6 @@ public class HomeActivity extends Activity {
                     return false;
             }
         }
-    }
+
+
+}
