@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".HotelActivity">
 
+    <Button
+        android:id="@+id/buttonViewHotel"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="209dp"
+        android:layout_marginTop="25dp"
+        android:text="View Hotel" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="31dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="           Enter day" />
 </RelativeLayout>
