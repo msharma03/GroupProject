@@ -1,9 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewTripTitle"
+                android:layout_width="229dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="9dp"
+                android:text="Trip Title"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewTripDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTripTitle"
+            android:text="Trip Date"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTripDate"
+            android:layout_alignStart="@+id/textViewTripTitle"
+            android:layout_marginStart="103dp"
+            android:layout_marginTop="-10dp"
+            android:text="Trip Overview"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentStart="true"
+            android:text="Mon, August 10 2019" />
+
+        <Button
+            android:id="@+id/buttonDay1Transportation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/textView5"
+            android:layout_alignStart="@+id/textViewTripTitle"
+            android:text="New York City (JFK) - Seoul (ICN)" />
+
+        <Button
+            android:id="@+id/buttonDay1Hotel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonDay1Transportation"
+            android:layout_alignStart="@+id/textViewTripTitle"
+            android:layout_marginBottom="5dp"
+            android:text="W Hotel Seoul" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonDay2Event"
+            android:layout_alignStart="@+id/textView5"
+            android:text="Tue, August 11 2019" />
+
+        <Button
+            android:id="@+id/buttonDay2Event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_alignEnd="@+id/textViewTripTitle"
+            android:layout_centerVertical="true"
+            android:text="Rooftope Bar" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wed, August 12 2019" />
+
+        <Button
+            android:id="@+id/buttonDay3Transportation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textViewTripTitle"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:text="Seoul (SEO) - Busan (PUS)" />
+
+        <Button
+            android:id="@+id/buttonDay3Hotel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView5"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:text="Sheraton Busan" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thu, August 13 2019" />
+
+        <Button
+            android:id="@+id/buttonDay4Transportation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_toStartOf="@+id/textView3"
+            android:text="Seoul (ICN) - New York City (JFK)" />
+
+    </LinearLayout>
+
+</LinearLayout>
