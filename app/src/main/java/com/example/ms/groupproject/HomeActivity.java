@@ -46,7 +46,6 @@ public class HomeActivity extends Activity implements View.OnClickListener {
         buttonDay3Transportation.setOnClickListener(this);
         buttonDay3Hotel.setOnClickListener(this);
         buttonDay4Transportation.setOnClickListener(this);
-
     }
         // menu created below
 
@@ -90,16 +89,58 @@ public class HomeActivity extends Activity implements View.OnClickListener {
         // Switch screen to activities
         // "||" means "or" in if clauses
 
-        if ((view == buttonDay1Transportation)|| (view == buttonDay3Transportation) || (view == buttonDay4Transportation)) {
+        if (view == buttonDay1Transportation) {
             Intent intentTransportation = new Intent (this, TransportationActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("TransportKey", "1");
+            intentTransportation.putExtras(bundle);
+
             startActivity(intentTransportation);
-        } else if ((view == buttonDay1Hotel) || (view == buttonDay3Hotel)){
+        } else if (view == buttonDay4Transportation){
+
+            Intent intentTransportation = new Intent (this, TransportationActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("TransportKey", "4");
+            intentTransportation.putExtras(bundle);
+
+            startActivity(intentTransportation);
+        }
+
+        else if (view == buttonDay3Transportation){
+            Intent intentTransportation = new Intent (this, TransportationActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("TransportKey", "3");
+            intentTransportation.putExtras(bundle);
+
+            startActivity(intentTransportation);
+        }
+        else if (view == buttonDay1Hotel){
             Intent intentHotel = new Intent(this, HotelActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("HotelKey", "1");
+            intentHotel.putExtras(bundle);
+
+            startActivity(intentHotel);
+        } else if (view == buttonDay3Hotel){
+            Intent intentHotel = new Intent(this, HotelActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("HotelKey", "3");
+            intentHotel.putExtras(bundle);
+
             startActivity(intentHotel);
         } else if (view == buttonDay2Event){
             Intent intentEvent = new Intent(this, EventActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("EventKey", "2");
+            intentEvent.putExtras(bundle);
+
             startActivity(intentEvent);
         }
-
     }
 }
