@@ -6,4 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".HotelActivity">
 
+    <Button
+        android:id="@+id/buttonViewHotel"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="209dp"
+        android:layout_marginTop="25dp"
+        android:text="View Hotel" />
+
+    <EditText
+        android:id="@+id/editTextHotelDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="31dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="           Enter day" />
+
+    <TextView
+        android:id="@+id/textViewHotelName"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="145dp"
+        android:text="Hotel: "
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewHotelAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewHotelName"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="210dp"
+        android:text="Address:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewHotelLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewHotelName"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="224dp"
+        android:text="Link:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewHotelDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewHotelName"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="167dp"
+        android:text="Date:"
+        android:textSize="18sp" />
+
 </RelativeLayout>
