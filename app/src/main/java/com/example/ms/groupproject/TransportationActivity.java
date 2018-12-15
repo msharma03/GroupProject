@@ -1,15 +1,20 @@
 package com.example.ms.groupproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,25 +38,71 @@ public class TransportationActivity extends Activity implements View.OnClickList
         editTextDay = findViewById(R.id.editTextDay);
 
         buttonSearch.setOnClickListener(this);
+
+       // FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //final DatabaseReference myRef = database.getReference("transport");
+
+        //String Day = "1";
+        //String Type = "flight";
+        //String Date = "05/16/2018";
+        //String Time = "5:30PM";
+
+
+        //transport newTransport = new transport (Day, Type, Date ,Time);
+        //myRef.push().setValue(newTransport);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater optionsMenuInflater = getMenuInflater();
+        optionsMenuInflater.inflate(R.menu.dropdown_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        switch (item.getItemId()){
+            case R.id.menuitem_transportation:
+                return true;
+            case R.id.menuitem_hotel:
+                Intent intentHotel = new Intent(TransportationActivity.this, HotelActivity.class);
+                startActivity(intentHotel);
+                return true;
+            case R.id.menuitem_event:
+                Intent intentEvent = new Intent(TransportationActivity.this, EventActivity.class);
+                startActivity(intentEvent);
+                return true;
+            case R.id.menuitem_home:
+                Intent intentTransportation = new Intent(TransportationActivity.this, HomeActivity.class);
+                startActivity(intentTransportation);
+                return true;
+            case R.id.menuitem_logout:
+                Intent intentLogout = new Intent(TransportationActivity.this, MainActivity.class);
+                FirebaseAuth.getInstance().signOut();
+                startActivity(intentLogout);
+                return true;
+            default:
+                return false;
+        }
     }
 
     @Override
     public void onClick(View v) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference("Transport");
+        final DatabaseReference myRef = database.getReference("transport");
 
     if (v == buttonSearch) {
-        final String findDay=editTextDay.getText().toString();
-        myRef.child("day").equalTo(findDay).addValueEventListener(new ValueEventListener() {
+        final String findDayString = editTextDay.getText().toString();
+        myRef.orderByChild("Day").equalTo(findDayString).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    myRef.child("Day").equalTo(findDay).addChildEventListener(new ChildEventListener() {
+                    myRef.orderByChild("Day").equalTo(findDayString).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                             transport findTransport = dataSnapshot.getValue(transport.class);
-                            textViewTransportation.setText("You have a " + findTransport.Type + "on" + findTransport.Day + "at" + findTransport.Time);
+                            textViewTransportation.setText("You have a " + findTransport.Type + " on " + findTransport.Date + " at " + findTransport.Time);
 
                         }
 

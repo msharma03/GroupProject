@@ -1,9 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EventActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/editTextSearchEventsDay"
+        android:layout_width="82dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-42dp"
+        android:layout_marginTop="55dp"
+        android:layout_toEndOf="@+id/textView"
+        android:ems="10"
+        android:hint="Enter Day"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextSearchEventsDay"
+        android:layout_alignStart="@+id/editTextSearchEventsDay"
+        android:layout_marginStart="-4dp"
+        android:layout_marginBottom="2dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Search By Importance" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:text="EVENTS"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/buttonSearchEventsDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editTextSearchEventsDay"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="77dp"
+        android:layout_marginLeft="77dp"
+        android:layout_marginTop="-4dp"
+        android:text="Search Day" />
+
+    <TextView
+        android:id="@+id/textViewEventsType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonSearchEventsDay"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="226dp"
+        android:layout_marginEnd="91dp"
+        android:text="Type:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewNameOfEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonSearchEventsDay"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="91dp"
+        android:layout_marginBottom="229dp"
+        android:text="Name:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewEventTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonSearchEventsDay"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="91dp"
+        android:layout_marginBottom="197dp"
+        android:text="Time:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewEventAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonSearchEventsDay"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="163dp"
+        android:text="Address:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textSearchEventType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewEventsType"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="124dp"
+        android:layout_marginRight="124dp"
+        android:layout_marginBottom="0dp"
+        android:text="TextView"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textSearchEventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textSearchEventType"
+        android:layout_alignBottom="@+id/textViewNameOfEvent"
+        android:text="TextView"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textSearchEventTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textSearchEventType"
+        android:layout_alignBottom="@+id/textViewEventTime"
+        android:text="TextView"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textSearchEventAddresss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textSearchEventType"
+        android:layout_alignBottom="@+id/textViewEventAddress"
+        android:text="TextView"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewEventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textViewEventsType"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="133dp"
+        android:text="Date:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textSearchEventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textSearchEventType"
+        android:layout_alignBottom="@+id/textViewEventDate"
+        android:text="TextView"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewEventDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textViewEventsType"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="101dp"
+        android:text="Description:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textSearchEventDescription"
+        android:layout_width="171dp"
+        android:layout_height="106dp"
+        android:layout_alignStart="@+id/textSearchEventType"
+        android:layout_alignTop="@+id/textViewEventDescription"
+        android:text="TextView"
+        android:textSize="16sp" />
+
+</RelativeLayout>
