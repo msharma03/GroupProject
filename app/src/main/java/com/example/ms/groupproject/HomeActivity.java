@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeActivity extends Activity implements View.OnClickListener {
 
     TextView textViewTripTitle, textViewTripDate;
-    Button buttonDay1Transportation, buttonDay1Hotel, buttonDay2Event, buttonDay3Transportation, buttonDay3Hotel, buttonDay4Transportation;
+    Button buttonDay1Transportation, buttonDay1Hotel, buttonDay2Event, buttonDay2Hotel, buttonDay3Transportation, buttonDay3Event, buttonDay3Hotel, buttonDay4Hotel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +36,21 @@ public class HomeActivity extends Activity implements View.OnClickListener {
         buttonDay1Transportation = findViewById(R.id.buttonDay1Transportation);
         buttonDay1Hotel = findViewById(R.id.buttonDay1Hotel);
         buttonDay2Event = findViewById(R.id.buttonDay2Event);
+        buttonDay2Hotel = findViewById(R.id.buttonDay2Hotel);
         buttonDay3Transportation = findViewById(R.id.buttonDay3Transportation);
+        buttonDay3Event = findViewById(R.id.buttonDay3Event);
         buttonDay3Hotel = findViewById(R.id.buttonDay3Hotel);
-        buttonDay4Transportation = findViewById(R.id.buttonDay4Transportation);
+        buttonDay4Hotel = findViewById(R.id.buttonDay4Hotel);
 
         buttonDay1Transportation.setOnClickListener(this);
         buttonDay1Hotel.setOnClickListener(this);
         buttonDay2Event.setOnClickListener(this);
+        buttonDay2Hotel.setOnClickListener(this);
         buttonDay3Transportation.setOnClickListener(this);
+        buttonDay3Event.setOnClickListener(this);
         buttonDay3Hotel.setOnClickListener(this);
-        buttonDay4Transportation.setOnClickListener(this);
+        buttonDay4Hotel.setOnClickListener(this);
+
     }
     // menu created below
 
@@ -114,18 +119,38 @@ public class HomeActivity extends Activity implements View.OnClickListener {
             intentTransportation.putExtras(bundle);
 
             startActivity(intentTransportation);
-        } else if (view == buttonDay4Transportation){
 
-            Intent intentTransportation = new Intent (this, TransportationActivity.class);
+        } else if (view == buttonDay1Hotel){
+
+            Intent intentHotel = new Intent (this, HotelActivity.class);
 
             Bundle bundle = new Bundle();
-            bundle.putString("TransportKey", "4");
-            intentTransportation.putExtras(bundle);
+            bundle.putString("HotelKey", "1");
+            intentHotel.putExtras(bundle);
 
-            startActivity(intentTransportation);
-        }
+            startActivity(intentHotel);
 
-        else if (view == buttonDay3Transportation){
+        } else if (view == buttonDay2Event){
+
+            Intent intentEvent = new Intent (this, EventActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("EventKey", "2");
+            intentEvent.putExtras(bundle);
+
+            startActivity(intentEvent);
+
+        }else if (view == buttonDay2Hotel){
+
+            Intent intentHotel = new Intent (this, HotelActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("HotelKey", "2");
+            intentHotel.putExtras(bundle);
+
+            startActivity(intentHotel);
+
+        } else if (view == buttonDay3Transportation){
             Intent intentTransportation = new Intent (this, TransportationActivity.class);
 
             Bundle bundle = new Bundle();
@@ -134,14 +159,15 @@ public class HomeActivity extends Activity implements View.OnClickListener {
 
             startActivity(intentTransportation);
         }
-        else if (view == buttonDay1Hotel){
-            Intent intentHotel = new Intent(this, HotelActivity.class);
+        else if (view == buttonDay3Event){
+            Intent intentEvent = new Intent(this, EventActivity.class);
 
             Bundle bundle = new Bundle();
-            bundle.putString("HotelKey", "1");
-            intentHotel.putExtras(bundle);
+            bundle.putString("EventKey", "3");
+            intentEvent.putExtras(bundle);
 
-            startActivity(intentHotel);
+            startActivity(intentEvent);
+
         } else if (view == buttonDay3Hotel){
             Intent intentHotel = new Intent(this, HotelActivity.class);
 
@@ -150,14 +176,15 @@ public class HomeActivity extends Activity implements View.OnClickListener {
             intentHotel.putExtras(bundle);
 
             startActivity(intentHotel);
-        } else if (view == buttonDay2Event){
-            Intent intentEvent = new Intent(this, EventActivity.class);
+
+        } else if (view == buttonDay4Hotel){
+            Intent intentHotel = new Intent(this, HotelActivity.class);
 
             Bundle bundle = new Bundle();
-            bundle.putString("EventKey", "3");
-            intentEvent.putExtras(bundle);
+            bundle.putString("HotelKey", "4");
+            intentHotel.putExtras(bundle);
 
-            startActivity(intentEvent);
+            startActivity(intentHotel);
         }
     }
 }
