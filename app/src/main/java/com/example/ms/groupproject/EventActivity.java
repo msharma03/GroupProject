@@ -61,46 +61,77 @@ public class EventActivity extends Activity implements View.OnClickListener {
         Bundle bundle = getIntent().getExtras();
         String stuff = bundle.getString("EventKey");
 
-        //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
-        myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Events findDay = dataSnapshot.getValue(Events.class);
+        Bundle bundleEventMenu = getIntent().getExtras();
+        String calledMenu = bundleEventMenu.getString("HotelKey");
 
-                textSearchEventType.setText(findDay.EventType);
-                textSearchEventName.setText(findDay.EventName);
-                textSearchEventTime.setText(findDay.EventTime);
-                textSearchEventDate.setText(findDay.EventDate);
-                textSearchDescription.setText(findDay.EventDescription);
-                textSearchEventAddresss.setText(findDay.EventAddress);
-                currentKey = dataSnapshot.getKey();
-                currentEvent = findDay;
+        if (calledMenu == "0") {
 
-            }
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_event);
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            buttonSearchEvents = findViewById(R.id.buttonSearchEventsDay);
+            editTextSearchEventsDay = findViewById(R.id.editTextSearchEventsDay);
+            textSearchEventAddresss = findViewById(R.id.textSearchEventAddresss);
+            textSearchEventName = findViewById(R.id.textSearchEventName);
+            textSearchEventTime = findViewById(R.id.textSearchEventTime);
+            textSearchEventType = findViewById(R.id.textSearchEventType);
+            textViewEventAddress = findViewById(R.id.textViewEventAddress);
+            textViewEventTime = findViewById(R.id.textViewEventTime);
+            textViewNameOfEvent = findViewById(R.id.textViewNameOfEvent);
+            textViewEventsType = findViewById(R.id.textViewEventsType);
+            textViewEventDate = findViewById(R.id.textViewEventDate);
+            textSearchEventDate = findViewById(R.id.textSearchEventDate);
+            textViewEventDescription = findViewById(R.id.textViewEventDescription);
+            textSearchDescription = findViewById(R.id.textSearchEventDescription);
 
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+            buttonSearchEvents.setOnClickListener(this);
 
 
+        } else {
+
+
+            //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
+            myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    Events findDay = dataSnapshot.getValue(Events.class);
+
+                    textSearchEventType.setText(findDay.EventType);
+                    textSearchEventName.setText(findDay.EventName);
+                    textSearchEventTime.setText(findDay.EventTime);
+                    textSearchEventDate.setText(findDay.EventDate);
+                    textSearchDescription.setText(findDay.EventDescription);
+                    textSearchEventAddresss.setText(findDay.EventAddress);
+                    currentKey = dataSnapshot.getKey();
+                    currentEvent = findDay;
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+        }
     }
+
 
     @Override
     public void onClick(View view) {
@@ -183,12 +214,24 @@ public class EventActivity extends Activity implements View.OnClickListener {
                 return true;
             case R.id.menuitem_hotel:
                 Intent intentHotel = new Intent(EventActivity.this, HotelActivity.class);
+
+                //setting bundle to a dummy value of 0 when called from dropdown menu
+                Bundle bundleHotelMenu = new Bundle();
+                bundleHotelMenu.putString("HotelKey", "0");
+                intentHotel.putExtras(bundleHotelMenu);
+
+
                 startActivity(intentHotel);
                 return true;
             case R.id.menuitem_event:
                 return true;
             case R.id.menuitem_transportation:
                 Intent intentTransportation = new Intent(EventActivity.this, TransportationActivity.class);
+
+                Bundle bundleTransportMenu = new Bundle();
+                bundleTransportMenu.putString("TransportKey", "0");
+                intentTransportation.putExtras(bundleTransportMenu);
+
                 startActivity(intentTransportation);
                 return true;
             case R.id.menuitem_logout:

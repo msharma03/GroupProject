@@ -63,14 +63,31 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                 return true;
             case R.id.menuitem_hotel:
                 Intent intentHotel = new Intent(HomeActivity.this, HotelActivity.class);
+
+                //setting bundle to a dummy value of 0 when called from dropdown menu
+                Bundle bundleHotelMenu = new Bundle();
+                bundleHotelMenu.putString("HotelKey", "0");
+                intentHotel.putExtras(bundleHotelMenu);
+
+
                 startActivity(intentHotel);
                 return true;
             case R.id.menuitem_event:
                 Intent intentEvent = new Intent(HomeActivity.this, EventActivity.class);
+
+                Bundle bundleEventMenu = new Bundle();
+                bundleEventMenu.putString("EventKey", "0");
+                intentEvent.putExtras(bundleEventMenu);
+
                 startActivity(intentEvent);
                 return true;
             case R.id.menuitem_transportation:
                 Intent intentTransportation = new Intent(HomeActivity.this, TransportationActivity.class);
+
+                Bundle bundleTransportMenu = new Bundle();
+                bundleTransportMenu.putString("TransportKey", "0");
+                intentTransportation.putExtras(bundleTransportMenu);
+
                 startActivity(intentTransportation);
                 return true;
             case R.id.menuitem_logout:

@@ -39,7 +39,7 @@ public class TransportationActivity extends Activity implements View.OnClickList
 
         buttonSearch.setOnClickListener(this);
 
-       // FirebaseDatabase database = FirebaseDatabase.getInstance();
+        // FirebaseDatabase database = FirebaseDatabase.getInstance();
         //final DatabaseReference myRef = database.getReference("transport");
 
         //String Day = "1";
@@ -59,36 +59,51 @@ public class TransportationActivity extends Activity implements View.OnClickList
         Bundle bundle = getIntent().getExtras();
         String stuff = bundle.getString("TransportKey");
 
-        //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
-        myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                transport findTransport = dataSnapshot.getValue(transport.class);
-                textViewTransportation.setText("You have a " + findTransport.Type + " on " + findTransport.Date + " at " + findTransport.Time);
+        Bundle bundleTransportMenu = getIntent().getExtras();
+        String calledMenu = bundleTransportMenu.getString("HotelKey");
 
-            }
+        if (calledMenu == "0") {
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_transportation);
 
-            }
+            buttonSearch = findViewById(R.id.buttonSearch);
+            textViewTransportation = findViewById(R.id.textViewTransportation);
+            editTextDay = findViewById(R.id.editTextDay);
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+            buttonSearch.setOnClickListener(this);
+        } else {
+            //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
+            myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    transport findTransport = dataSnapshot.getValue(transport.class);
+                    textViewTransportation.setText("You have a " + findTransport.Type + " on " + findTransport.Date + " at " + findTransport.Time);
 
-            }
+                }
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-            }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-            }
-        });
+                }
 
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
     }
 
     @Override
@@ -107,13 +122,24 @@ public class TransportationActivity extends Activity implements View.OnClickList
                 return true;
             case R.id.menuitem_hotel:
                 Intent intentHotel = new Intent(TransportationActivity.this, HotelActivity.class);
+
+                Bundle bundleHotelMenu = new Bundle();
+                bundleHotelMenu.putString("HotelKey", "0");
+                intentHotel.putExtras(bundleHotelMenu);
+
                 startActivity(intentHotel);
                 return true;
             case R.id.menuitem_event:
                 Intent intentEvent = new Intent(TransportationActivity.this, EventActivity.class);
+
+                Bundle bundleEventMenu = new Bundle();
+                bundleEventMenu.putString("EventKey", "0");
+                intentEvent.putExtras(bundleEventMenu);
+
                 startActivity(intentEvent);
                 return true;
             case R.id.menuitem_transportation:
+
                 return true;
             case R.id.menuitem_logout:
                 Intent intentLogout = new Intent(TransportationActivity.this, MainActivity.class);

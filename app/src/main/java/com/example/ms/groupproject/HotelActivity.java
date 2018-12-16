@@ -32,7 +32,7 @@ public class HotelActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel);
-     //   mAuth = FirebaseAuth.getInstance();
+        //   mAuth = FirebaseAuth.getInstance();
 
         buttonViewHotel = findViewById(R.id.buttonViewHotel);
         editTextHotelDay = findViewById(R.id.editTextHotelDay);
@@ -52,35 +52,61 @@ public class HotelActivity extends Activity implements View.OnClickListener {
         Bundle bundle = getIntent().getExtras();
         String stuff = bundle.getString("HotelKey");
 
+        Bundle bundleHotelMenu = getIntent().getExtras();
+        String calledMenu = bundleHotelMenu.getString("HotelKey");
+
         //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
-        myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Hotels findhotel = dataSnapshot.getValue(Hotels.class);
 
-                textViewHotelName.setText(findhotel.Name);
-                textViewHotelDate.setText(findhotel.Date);
-                textViewHotelAddress.setText(findhotel.Address);
-                textViewHotelLink.setText(findhotel.Link);
-            }
+        if (calledMenu == "0") {
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_hotel);
+            //   mAuth = FirebaseAuth.getInstance();
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-            }
+            buttonViewHotel = findViewById(R.id.buttonViewHotel);
+            editTextHotelDay = findViewById(R.id.editTextHotelDay);
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
+            textViewHotelName = findViewById(R.id.textViewHotelName);
+            textViewHotelAddress = findViewById(R.id.textViewHotelAddress);
+            textViewHotelDate = findViewById(R.id.textViewHotelDate);
+            textViewHotelLink = findViewById(R.id.textViewHotelLink);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+            buttonViewHotel.setOnClickListener(this);
 
+
+
+        }
+
+        else {
+            myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    Hotels findhotel = dataSnapshot.getValue(Hotels.class);
+
+                    textViewHotelName.setText(findhotel.Name);
+                    textViewHotelDate.setText(findhotel.Date);
+                    textViewHotelAddress.setText(findhotel.Address);
+                    textViewHotelLink.setText(findhotel.Link);
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+
+        }
     }
 
     @Override
@@ -158,10 +184,20 @@ public class HotelActivity extends Activity implements View.OnClickListener {
                 return true;
             case R.id.menuitem_event:
                 Intent intentEvent = new Intent(HotelActivity.this, EventActivity.class);
+
+                Bundle bundleEventMenu = new Bundle();
+                bundleEventMenu.putString("EventKey", "0");
+                intentEvent.putExtras(bundleEventMenu);
+
                 startActivity(intentEvent);
                 return true;
             case R.id.menuitem_transportation:
                 Intent intentTransportation = new Intent(HotelActivity.this, TransportationActivity.class);
+
+                Bundle bundleTransportMenu = new Bundle();
+                bundleTransportMenu.putString("TransportKey", "0");
+                intentTransportation.putExtras(bundleTransportMenu);
+
                 startActivity(intentTransportation);
                 return true;
             case R.id.menuitem_logout:
