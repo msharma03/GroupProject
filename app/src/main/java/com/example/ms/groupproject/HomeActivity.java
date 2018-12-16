@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeActivity extends Activity implements View.OnClickListener {
 
     TextView textViewTripTitle, textViewTripDate;
-    Button buttonDay1Transportation,buttonDay1Hotel,buttonDay2Event, buttonDay3Transportation, buttonDay3Hotel, buttonDay4Transportation;
+    Button buttonDay1Transportation, buttonDay1Hotel, buttonDay2Event, buttonDay3Transportation, buttonDay3Hotel, buttonDay4Transportation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,41 +47,41 @@ public class HomeActivity extends Activity implements View.OnClickListener {
         buttonDay3Hotel.setOnClickListener(this);
         buttonDay4Transportation.setOnClickListener(this);
     }
-        // menu created below
+    // menu created below
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater optionsMenuInflater = getMenuInflater();
-        optionsMenuInflater.inflate(R.menu.dropdown_menu,menu);
+        optionsMenuInflater.inflate(R.menu.dropdown_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-            @Override
-            public boolean onOptionsItemSelected (MenuItem item){
-            switch (item.getItemId()){
-                case R.id.menuitem_home:
-                    return true;
-                case R.id.menuitem_hotel:
-                    Intent intentHotel = new Intent(HomeActivity.this, HotelActivity.class);
-                    startActivity(intentHotel);
-                    return true;
-                case R.id.menuitem_event:
-                    Intent intentEvent = new Intent(HomeActivity.this, EventActivity.class);
-                    startActivity(intentEvent);
-                    return true;
-                case R.id.menuitem_transportation:
-                    Intent intentTransportation = new Intent(HomeActivity.this, TransportationActivity.class);
-                    startActivity(intentTransportation);
-                    return true;
-                case R.id.menuitem_logout:
-                    Intent intentLogout = new Intent(HomeActivity.this, MainActivity.class);
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(intentLogout);
-                    return true;
-                default:
-                    return false;
-            }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuitem_home:
+                return true;
+            case R.id.menuitem_hotel:
+                Intent intentHotel = new Intent(HomeActivity.this, HotelActivity.class);
+                startActivity(intentHotel);
+                return true;
+            case R.id.menuitem_event:
+                Intent intentEvent = new Intent(HomeActivity.this, EventActivity.class);
+                startActivity(intentEvent);
+                return true;
+            case R.id.menuitem_transportation:
+                Intent intentTransportation = new Intent(HomeActivity.this, TransportationActivity.class);
+                startActivity(intentTransportation);
+                return true;
+            case R.id.menuitem_logout:
+                Intent intentLogout = new Intent(HomeActivity.this, MainActivity.class);
+                FirebaseAuth.getInstance().signOut();
+                startActivity(intentLogout);
+                return true;
+            default:
+                return false;
         }
+    }
 
     @Override
     public void onClick(View view) {

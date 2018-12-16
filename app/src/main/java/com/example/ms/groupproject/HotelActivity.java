@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,8 +51,7 @@ public class HotelActivity extends Activity implements View.OnClickListener {
         DatabaseReference myRef = database.getReference("message");
         //myRef.setValue("");
 
-        if (v == buttonViewHotel)
-        {
+        if (v == buttonViewHotel) {
             String HotelDay = editTextHotelDay.getText().toString();
 //CAN SOMEONE CHECK THIS PART?
             myRef.orderByChild("Day").equalTo(HotelDay).addChildEventListener(new ChildEventListener() {
@@ -60,8 +62,8 @@ public class HotelActivity extends Activity implements View.OnClickListener {
                     Hotels findhotel = dataSnapshot.getValue(Hotels.class);
 
                     textViewHotelName.setText(" " + findhotel.hotelname);
-                    textViewHotelDate.setText(" " + findhotel.address;
-                    textViewHotelLink.setText(" " + findhotel.link;
+                    textViewHotelDate.setText(" " + findhotel.address);
+                    textViewHotelLink.setText(" " + findhotel.link);
 
                 }
 
@@ -84,6 +86,42 @@ public class HotelActivity extends Activity implements View.OnClickListener {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
-            })
+            });
+        }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater optionsMenuInflater = getMenuInflater();
+        optionsMenuInflater.inflate(R.menu.dropdown_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuitem_home:
+                Intent intentHome = new Intent(HotelActivity.this, HomeActivity.class);
+                startActivity(intentHome);
+                return true;
+            case R.id.menuitem_hotel:
+                return true;
+            case R.id.menuitem_event:
+                Intent intentEvent = new Intent(HotelActivity.this, EventActivity.class);
+                startActivity(intentEvent);
+                return true;
+            case R.id.menuitem_transportation:
+                Intent intentTransportation = new Intent(HotelActivity.this, TransportationActivity.class);
+                startActivity(intentTransportation);
+                return true;
+            case R.id.menuitem_logout:
+                Intent intentLogout = new Intent(HotelActivity.this, MainActivity.class);
+                FirebaseAuth.getInstance().signOut();
+                startActivity(intentLogout);
+                return true;
+            default:
+                return false;
+        }
+    }
+
 }
