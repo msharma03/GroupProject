@@ -51,6 +51,55 @@ public class EventActivity extends Activity implements View.OnClickListener {
         textSearchDescription = findViewById(R.id.textSearchEventDescription);
 
         buttonSearchEvents.setOnClickListener(this);
+
+
+        //getting "Day" from homeactivity and pulling data from firebase oncreate
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("Event");
+
+        //Event Key is the value of Day from HomeActivity
+        Bundle bundle = getIntent().getExtras();
+        String stuff = bundle.getString("EventKey");
+
+        //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
+        myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Events findDay = dataSnapshot.getValue(Events.class);
+
+                textSearchEventType.setText(findDay.EventType);
+                textSearchEventName.setText(findDay.EventName);
+                textSearchEventTime.setText(findDay.EventTime);
+                textSearchEventDate.setText(findDay.EventDate);
+                textSearchDescription.setText(findDay.EventDescription);
+                textSearchEventAddresss.setText(findDay.EventAddress);
+                currentKey = dataSnapshot.getKey();
+                currentEvent = findDay;
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -79,7 +128,6 @@ public class EventActivity extends Activity implements View.OnClickListener {
                                 currentKey = dataSnapshot.getKey();
                                 currentEvent = findDay;
 
-                                // keep working from here
                             }
 
                             @Override
