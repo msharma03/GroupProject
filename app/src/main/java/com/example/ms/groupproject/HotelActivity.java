@@ -27,7 +27,6 @@ public class HotelActivity extends Activity implements View.OnClickListener {
     TextView textViewHotelName,textViewHotelAddress,textViewHotelLink,textViewHotelDate;
    // private FirebaseAuth mAuth;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +47,7 @@ public class HotelActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        DatabaseReference myRef = database.getReference("Hotel");
         //myRef.setValue("");
 
         if (v == buttonViewHotel) {
@@ -61,9 +60,9 @@ public class HotelActivity extends Activity implements View.OnClickListener {
                     String findkey = dataSnapshot.getKey();
                     Hotels findhotel = dataSnapshot.getValue(Hotels.class);
 
-                    textViewHotelName.setText(" " + findhotel.hotelname);
-                    textViewHotelDate.setText(" " + findhotel.address);
-                    textViewHotelLink.setText(" " + findhotel.link);
+                    textViewHotelName.setText(" " + findhotel.HotelName);
+                    textViewHotelDate.setText(" " + findhotel.HotelAddress);
+                    textViewHotelLink.setText(" " + findhotel.h);
 
                 }
 
@@ -123,5 +122,4 @@ public class HotelActivity extends Activity implements View.OnClickListener {
                 return false;
         }
     }
-
 }

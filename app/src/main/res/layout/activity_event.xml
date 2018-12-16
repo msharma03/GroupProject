@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/editTextSearchEventsDay"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="134dp"
+        android:layout_marginTop="119dp"
         android:layout_marginEnd="93dp"
         android:text="Type:"
         android:textSize="18sp" />
@@ -55,8 +55,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewEventsType"
         android:layout_alignEnd="@+id/editTextSearchEventsDay"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="93dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="94dp"
         android:text="Name:"
         android:textSize="18sp" />
 
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewEventDate"
         android:layout_alignEnd="@+id/editTextSearchEventsDay"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="93dp"
         android:text="Time:"
         android:textSize="18sp" />
@@ -84,44 +84,44 @@
 
     <TextView
         android:id="@+id/textSearchEventType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="233dp"
+        android:layout_height="35dp"
         android:layout_alignBottom="@+id/textViewEventsType"
         android:layout_marginStart="-91dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="-13dp"
         android:layout_toEndOf="@+id/editTextSearchEventsDay"
         android:text="XXXX"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textSearchEventName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="237dp"
+        android:layout_height="37dp"
         android:layout_alignBottom="@+id/textViewNameOfEvent"
-        android:layout_marginStart="-91dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginStart="-92dp"
+        android:layout_marginBottom="-15dp"
         android:layout_toEndOf="@+id/editTextSearchEventsDay"
         android:text="XXXX"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textSearchEventTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="239dp"
+        android:layout_height="38dp"
         android:layout_alignBottom="@+id/textViewEventTime"
         android:layout_marginStart="-91dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="-16dp"
         android:layout_toEndOf="@+id/editTextSearchEventsDay"
         android:text="XXXX"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textSearchEventAddresss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="239dp"
+        android:layout_height="58dp"
         android:layout_alignBottom="@+id/textViewEventAddress"
         android:layout_marginStart="-91dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="-36dp"
         android:layout_toEndOf="@+id/editTextSearchEventsDay"
         android:text="XXXX"
         android:textSize="16sp" />
@@ -132,18 +132,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewNameOfEvent"
         android:layout_alignEnd="@+id/editTextSearchEventsDay"
-        android:layout_marginTop="-1dp"
+        android:layout_marginTop="13dp"
         android:layout_marginEnd="93dp"
         android:text="Date:"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textSearchEventDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="236dp"
+        android:layout_height="40dp"
         android:layout_alignBottom="@+id/textViewEventDate"
         android:layout_marginStart="-91dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="-18dp"
         android:layout_toEndOf="@+id/editTextSearchEventsDay"
         android:text="XXXX"
         android:textSize="16sp" />
@@ -154,18 +154,18 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/editTextSearchEventsDay"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="93dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginBottom="103dp"
         android:text="Description:"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textSearchEventDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="241dp"
+        android:layout_height="60dp"
         android:layout_alignBottom="@+id/textViewEventDescription"
         android:layout_marginStart="-91dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="-38dp"
         android:layout_toEndOf="@+id/editTextSearchEventsDay"
         android:text="XXXX"
         android:textSize="16sp" />
