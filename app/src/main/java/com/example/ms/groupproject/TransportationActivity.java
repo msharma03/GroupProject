@@ -60,9 +60,11 @@ public class TransportationActivity extends Activity implements View.OnClickList
     }
 
     @Override
-    public boolean onOptionsItemSelected (MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menuitem_transportation:
+            case R.id.menuitem_home:
+                Intent intentHome = new Intent(TransportationActivity.this, HomeActivity.class);
+                startActivity(intentHome);
                 return true;
             case R.id.menuitem_hotel:
                 Intent intentHotel = new Intent(TransportationActivity.this, HotelActivity.class);
@@ -72,9 +74,7 @@ public class TransportationActivity extends Activity implements View.OnClickList
                 Intent intentEvent = new Intent(TransportationActivity.this, EventActivity.class);
                 startActivity(intentEvent);
                 return true;
-            case R.id.menuitem_home:
-                Intent intentTransportation = new Intent(TransportationActivity.this, HomeActivity.class);
-                startActivity(intentTransportation);
+            case R.id.menuitem_transportation:
                 return true;
             case R.id.menuitem_logout:
                 Intent intentLogout = new Intent(TransportationActivity.this, MainActivity.class);
