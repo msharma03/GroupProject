@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HotelActivity extends Activity implements View.OnClickListener {
 
@@ -40,59 +41,109 @@ public class HotelActivity extends Activity implements View.OnClickListener {
         textViewHotelAddress = findViewById(R.id.textViewHotelAddress);
         textViewHotelDate = findViewById(R.id.textViewHotelDate);
         textViewHotelLink = findViewById(R.id.textViewHotelLink);
+
         buttonViewHotel.setOnClickListener(this);
+
+        //getting "Day" from homeactivity and pulling data from firebase oncreate
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("Hotel");
+
+        //Hotel Key is the value of Day from HomeActivity
+        Bundle bundle = getIntent().getExtras();
+        String stuff = bundle.getString("HotelKey");
+
+        //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
+        myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Hotels findhotel = dataSnapshot.getValue(Hotels.class);
+
+                textViewHotelName.setText(findhotel.Name);
+                textViewHotelDate.setText(findhotel.Date);
+                textViewHotelAddress.setText(findhotel.Address);
+                textViewHotelLink.setText(findhotel.Link);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
     }
 
     @Override
     public void onClick(View v) {
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Hotel");
-        //myRef.setValue("");
+        final DatabaseReference myRef = database.getReference("Hotel");
 
         if (v == buttonViewHotel) {
-            String HotelDay = editTextHotelDay.getText().toString();
+            final String HotelDay = editTextHotelDay.getText().toString();
 //CAN SOMEONE CHECK THIS PART?
-            myRef.orderByChild("Day").equalTo(HotelDay).addChildEventListener(new ChildEventListener() {
+            myRef.orderByChild("Day").equalTo(HotelDay).addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        myRef.orderByChild("Day").equalTo(HotelDay).addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                    String findkey = dataSnapshot.getKey();
-                    Hotels findhotel = dataSnapshot.getValue(Hotels.class);
+                                Hotels findhotel = dataSnapshot.getValue(Hotels.class);
 
-                    textViewHotelName.setText(" " + findhotel.HotelName);
-                    textViewHotelDate.setText(" " + findhotel.HotelAddress);
-                    textViewHotelLink.setText(" " + findhotel.h);
+                                textViewHotelName.setText(findhotel.Name);
+                                textViewHotelDate.setText(findhotel.Date);
+                                textViewHotelAddress.setText(findhotel.Address);
+                                textViewHotelLink.setText(findhotel.Link);
+                            }
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            }
 
-                }
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                            }
 
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            }
 
-                }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+                        });
 
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                    } else {
+                        textViewHotelName.setText("Oops! There is no accommodation on that day");
+                        textViewHotelDate.setText("N/A");
+                        textViewHotelAddress.setText("N/A");
+                        textViewHotelLink.setText("N/A");
+                    }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
+
             });
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater optionsMenuInflater = getMenuInflater();
-        optionsMenuInflater.inflate(R.menu.dropdown_menu, menu);
+        getMenuInflater().inflate(R.menu.dropdown_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

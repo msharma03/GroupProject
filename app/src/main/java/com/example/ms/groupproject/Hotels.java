@@ -1,15 +1,21 @@
 package com.example.ms.groupproject;
 
 public class Hotels {
-    String hotelname, address, link, day,date;
+    String Address;
+    String Date;
+    String Day;
+    String Link;
+    String Name;
 
-    public Hotels(String hotelname, String address, String link){
-        this.hotelname = hotelname;
-        this.address = address;
-        this.link = link;
-        this.day = day;
-        this.date = date;
+
+    public Hotels(String address, String date, String day, String link, String name) {
+        Address = address;
+        Date = date;
+        Day = day;
+        Link = link;
+        Name = name;
     }
+
         public Hotels() {
                 }
 }
