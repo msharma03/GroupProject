@@ -50,6 +50,45 @@ public class TransportationActivity extends Activity implements View.OnClickList
 
         //transport newTransport = new transport (Day, Type, Date ,Time);
         //myRef.push().setValue(newTransport);
+
+        //getting "Day" from homeactivity and pulling data from firebase oncreate
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("transport");
+
+        //transport Key is the value of Day from HomeActivity
+        Bundle bundle = getIntent().getExtras();
+        String stuff = bundle.getString("TransportKey");
+
+        //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
+        myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                transport findTransport = dataSnapshot.getValue(transport.class);
+                textViewTransportation.setText("You have a " + findTransport.Type + " on " + findTransport.Date + " at " + findTransport.Time);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
