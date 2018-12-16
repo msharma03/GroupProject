@@ -137,7 +137,7 @@ public class HomeActivity extends Activity implements View.OnClickListener {
             Intent intentEvent = new Intent(this, EventActivity.class);
 
             Bundle bundle = new Bundle();
-            bundle.putString("EventKey", "2");
+            bundle.putString("EventKey", "3");
             intentEvent.putExtras(bundle);
 
             startActivity(intentEvent);
