@@ -48,8 +48,7 @@ public class HotelActivity extends Activity implements View.OnClickListener {
         DatabaseReference myRef = database.getReference("message");
         //myRef.setValue("");
 
-        if (v == buttonViewHotel)
-        {
+        if (v == buttonViewHotel) {
             String HotelDay = editTextHotelDay.getText().toString();
 //CAN SOMEONE CHECK THIS PART?
             myRef.orderByChild("Day").equalTo(HotelDay).addChildEventListener(new ChildEventListener() {
@@ -60,8 +59,8 @@ public class HotelActivity extends Activity implements View.OnClickListener {
                     Hotels findhotel = dataSnapshot.getValue(Hotels.class);
 
                     textViewHotelName.setText(" " + findhotel.hotelname);
-                    textViewHotelDate.setText(" " + findhotel.address;
-                    textViewHotelLink.setText(" " + findhotel.link;
+                    textViewHotelDate.setText(" " + findhotel.address);
+                    textViewHotelLink.setText(" " + findhotel.link);
 
                 }
 
@@ -84,6 +83,7 @@ public class HotelActivity extends Activity implements View.OnClickListener {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
-            })
+            });
+        }
     }
 }
