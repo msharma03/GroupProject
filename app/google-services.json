@@ -39,6 +39,14 @@
           }
         },
         {
+          "client_id": "881421447467-i53ucguf5lititvh6fm8aptige54nhj4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ms.groupproject",
+            "certificate_hash": "2e1bbf230203959fa2de5f4fe166ef999bf67be7"
+          }
+        },
+        {
           "client_id": "881421447467-okkuvqodstvlh7pn3966qjeedckpicie.apps.googleusercontent.com",
           "client_type": 3
         }
