@@ -8,22 +8,22 @@
 
     <Button
         android:id="@+id/buttonViewHotel"
-        android:layout_width="136dp"
+        android:layout_width="101dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="209dp"
-        android:layout_marginTop="25dp"
-        android:text="View Hotel" />
+        android:layout_marginStart="206dp"
+        android:layout_marginTop="48dp"
+        android:text="Search" />
 
     <EditText
         android:id="@+id/editTextHotelDay"
-        android:layout_width="145dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="53dp"
         android:ems="10"
         android:hint="Enter day"
         android:inputType="text" />
@@ -31,12 +31,11 @@
     <TextView
         android:id="@+id/textViewHotelName"
         android:layout_width="232dp"
-        android:layout_height="77dp"
+        android:layout_height="62dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="104dp"
-        android:text="XXX"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="125dp"
         android:textSize="18sp" />
 
     <TextView
@@ -47,7 +46,6 @@
         android:layout_alignTop="@+id/textView8"
         android:layout_marginStart="2dp"
         android:layout_marginTop="0dp"
-        android:text="XXX"
         android:textSize="18sp" />
 
     <TextView
@@ -55,21 +53,18 @@
         android:layout_width="235dp"
         android:layout_height="125dp"
         android:layout_alignStart="@+id/editTextHotelDay"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="40dp"
-        android:text="XXX"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_marginStart="3dp"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textViewHotelDate"
-        android:layout_width="232dp"
-        android:layout_height="56dp"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textViewHotelName"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="189dp"
-        android:text="XXX"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="204dp"
         android:textSize="18sp" />
 
     <TextView
@@ -79,9 +74,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="106dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="127dp"
         android:text="Hotel:"
         android:textSize="18sp" />
 
@@ -90,8 +85,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textViewHotelDate"
-        android:layout_alignEnd="@+id/textView6"
-        android:layout_marginEnd="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="-3dp"
         android:text="Date:"
         android:textSize="18sp" />
 
@@ -114,9 +112,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewHotelAddress"
         android:layout_alignStart="@+id/textView6"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="14dp"
         android:text="Link:"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="Hotels"
+        android:textSize="24sp" />
+
 
 </RelativeLayout>

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TransportationActivity extends Activity implements View.OnClickListener {
     Button buttonSearch;
-    TextView textViewTransportation;
+    TextView textViewType, textViewDate, textViewTime, textViewNumber;
     EditText editTextDay;
 
 
@@ -34,7 +33,11 @@ public class TransportationActivity extends Activity implements View.OnClickList
         setContentView(R.layout.activity_transportation);
 
         buttonSearch = findViewById(R.id.buttonSearch);
-        textViewTransportation = findViewById(R.id.textViewTransportation);
+        textViewType = findViewById(R.id.textViewType);
+        textViewDate = findViewById(R.id.textViewDate);
+        textViewTime = findViewById(R.id.textViewTime);
+        textViewNumber = findViewById(R.id.textViewNumber);
+
         editTextDay = findViewById(R.id.editTextDay);
 
         buttonSearch.setOnClickListener(this);
@@ -68,7 +71,10 @@ public class TransportationActivity extends Activity implements View.OnClickList
             setContentView(R.layout.activity_transportation);
 
             buttonSearch = findViewById(R.id.buttonSearch);
-            textViewTransportation = findViewById(R.id.textViewTransportation);
+            textViewType = findViewById(R.id.textViewType);
+            textViewDate = findViewById(R.id.textViewDate);
+            textViewTime = findViewById(R.id.textViewTime);
+            textViewNumber = findViewById(R.id.textViewNumber);
             editTextDay = findViewById(R.id.editTextDay);
 
             buttonSearch.setOnClickListener(this);
@@ -78,8 +84,10 @@ public class TransportationActivity extends Activity implements View.OnClickList
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     transport findTransport = dataSnapshot.getValue(transport.class);
-                    textViewTransportation.setText("You have a " + findTransport.Type + " on " + findTransport.Date + " at " + findTransport.Time);
-
+                    textViewType.setText(findTransport.Type);
+                    textViewDate.setText(findTransport.Date);
+                    textViewTime.setText(findTransport.Time);
+                    textViewNumber.setText(findTransport.Number);
                 }
 
                 @Override
@@ -167,8 +175,10 @@ public class TransportationActivity extends Activity implements View.OnClickList
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                             transport findTransport = dataSnapshot.getValue(transport.class);
-                            textViewTransportation.setText("You have a " + findTransport.Type + " on " + findTransport.Date + " at " + findTransport.Time);
-
+                            textViewType.setText(findTransport.Type);
+                            textViewDate.setText(findTransport.Date);
+                            textViewTime.setText(findTransport.Time);
+                            textViewNumber.setText(findTransport.Number);
                         }
 
                         @Override
@@ -192,9 +202,8 @@ public class TransportationActivity extends Activity implements View.OnClickList
                         }
                     });
                 } else {
-                    textViewTransportation.setText("There is no transportation on that day");
+                    textViewType.setText("No transportation on that day");
                 }
-
 
             }
 

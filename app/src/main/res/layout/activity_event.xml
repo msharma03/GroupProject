@@ -32,11 +32,11 @@
 
     <Button
         android:id="@+id/buttonSearchEventsDay"
-        android:layout_width="wrap_content"
+        android:layout_width="93dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editTextSearchEventsDay"
         android:layout_toEndOf="@+id/editTextSearchEventsDay"
-        android:text="Search Day" />
+        android:text="Search" />
 
     <TextView
         android:id="@+id/textViewEventsType"
