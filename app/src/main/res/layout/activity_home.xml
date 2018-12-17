@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Day3:August 12" />
+            android:text="Day3: August 12" />
 
         <Button
             android:id="@+id/buttonDay3Transportation"
