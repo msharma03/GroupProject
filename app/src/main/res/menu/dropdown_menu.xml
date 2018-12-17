@@ -4,17 +4,32 @@
 
     <item
         android:id="@+id/menuitem_home"
-        android:title="Home" />
+        android:checkable="false"
+        android:enabled="true"
+        android:visible="true"
+        android:title="Home"/>
     <item
         android:id="@+id/menuitem_hotel"
+        android:checkable="false"
+        android:enabled="true"
+        android:visible="true"
         android:title="Hotels" />
     <item
         android:id="@+id/menuitem_event"
+        android:checkable="false"
+        android:enabled="true"
+        android:visible="true"
         android:title="Events" />
     <item
         android:id="@+id/menuitem_transportation"
+        android:checkable="false"
+        android:enabled="true"
+        android:visible="true"
         android:title="Transportation" />
     <item
         android:id="@+id/menuitem_logout"
+        android:checkable="false"
+        android:enabled="true"
+        android:visible="true"
         android:title="Logout" />
 </menu>

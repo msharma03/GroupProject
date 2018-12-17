@@ -6,39 +6,135 @@
     android:layout_height="match_parent"
     tools:context=".TransportationActivity">
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="Transportation"
+        android:textSize="24sp" />
+
     <EditText
         android:id="@+id/editTextDay"
-        android:layout_width="130dp"
+        android:layout_width="104dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="Enter Day"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/buttonSearch"
-        android:layout_width="wrap_content"
+        android:layout_width="93dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/editTextDay"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="78dp"
-        android:layout_marginRight="78dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="193dp"
+        android:layout_marginLeft="193dp"
+        android:layout_marginBottom="-5dp"
         android:text="Search" />
 
     <TextView
-        android:id="@+id/textViewTransportation"
-        android:layout_width="330dp"
-        android:layout_height="380dp"
+        android:id="@+id/textViewType"
+        android:layout_width="254dp"
+        android:layout_height="67dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="99dp" />
+        android:layout_marginStart="109dp"
+        android:layout_marginLeft="109dp"
+        android:layout_marginTop="133dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="225dp"
+        android:text="Date:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="136dp"
+        android:text="Type:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="281dp"
+        android:text="Time:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="341dp"
+        android:text="Number:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="187dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/textView14"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="108dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="1dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="185dp"
+        android:layout_height="36dp"
+        android:layout_alignTop="@+id/textView16"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginLeft="109dp"
+        android:layout_marginTop="0dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewNumber"
+        android:layout_width="191dp"
+        android:layout_height="41dp"
+        android:layout_alignTop="@+id/textView17"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="111dp"
+        android:layout_marginLeft="111dp"
+        android:layout_marginTop="0dp"
+        android:textSize="18sp" />
 </RelativeLayout>

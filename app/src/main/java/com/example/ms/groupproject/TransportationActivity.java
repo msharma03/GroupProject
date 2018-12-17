@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TransportationActivity extends Activity implements View.OnClickListener {
     Button buttonSearch;
-    TextView textViewTransportation;
+    TextView textViewType, textViewDate, textViewTime, textViewNumber;
     EditText editTextDay;
 
 
@@ -34,12 +33,16 @@ public class TransportationActivity extends Activity implements View.OnClickList
         setContentView(R.layout.activity_transportation);
 
         buttonSearch = findViewById(R.id.buttonSearch);
-        textViewTransportation = findViewById(R.id.textViewTransportation);
+        textViewType = findViewById(R.id.textViewType);
+        textViewDate = findViewById(R.id.textViewDate);
+        textViewTime = findViewById(R.id.textViewTime);
+        textViewNumber = findViewById(R.id.textViewNumber);
+
         editTextDay = findViewById(R.id.editTextDay);
 
         buttonSearch.setOnClickListener(this);
 
-       // FirebaseDatabase database = FirebaseDatabase.getInstance();
+        // FirebaseDatabase database = FirebaseDatabase.getInstance();
         //final DatabaseReference myRef = database.getReference("transport");
 
         //String Day = "1";
@@ -50,6 +53,65 @@ public class TransportationActivity extends Activity implements View.OnClickList
 
         //transport newTransport = new transport (Day, Type, Date ,Time);
         //myRef.push().setValue(newTransport);
+
+        //getting "Day" from homeactivity and pulling data from firebase oncreate
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("transport");
+
+        //transport Key is the value of Day from HomeActivity
+        Bundle bundle = getIntent().getExtras();
+        String stuff = bundle.getString("TransportKey");
+
+        Bundle bundleTransportMenu = getIntent().getExtras();
+        String calledMenu = bundleTransportMenu.getString("HotelKey");
+
+        if (calledMenu == "0") {
+
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_transportation);
+
+            buttonSearch = findViewById(R.id.buttonSearch);
+            textViewType = findViewById(R.id.textViewType);
+            textViewDate = findViewById(R.id.textViewDate);
+            textViewTime = findViewById(R.id.textViewTime);
+            textViewNumber = findViewById(R.id.textViewNumber);
+            editTextDay = findViewById(R.id.editTextDay);
+
+            buttonSearch.setOnClickListener(this);
+        } else {
+            //Same statement to pull date from firebase, just using "stuff" which is the Day from homeactivity
+            myRef.orderByChild("Day").equalTo(stuff).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    transport findTransport = dataSnapshot.getValue(transport.class);
+                    textViewType.setText(findTransport.Type);
+                    textViewDate.setText(findTransport.Date);
+                    textViewTime.setText(findTransport.Time);
+                    textViewNumber.setText(findTransport.Number);
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
     }
 
     @Override
@@ -60,21 +122,32 @@ public class TransportationActivity extends Activity implements View.OnClickList
     }
 
     @Override
-    public boolean onOptionsItemSelected (MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menuitem_transportation:
+            case R.id.menuitem_home:
+                Intent intentHome = new Intent(TransportationActivity.this, HomeActivity.class);
+                startActivity(intentHome);
                 return true;
             case R.id.menuitem_hotel:
                 Intent intentHotel = new Intent(TransportationActivity.this, HotelActivity.class);
+
+                Bundle bundleHotelMenu = new Bundle();
+                bundleHotelMenu.putString("HotelKey", "0");
+                intentHotel.putExtras(bundleHotelMenu);
+
                 startActivity(intentHotel);
                 return true;
             case R.id.menuitem_event:
                 Intent intentEvent = new Intent(TransportationActivity.this, EventActivity.class);
+
+                Bundle bundleEventMenu = new Bundle();
+                bundleEventMenu.putString("EventKey", "0");
+                intentEvent.putExtras(bundleEventMenu);
+
                 startActivity(intentEvent);
                 return true;
-            case R.id.menuitem_home:
-                Intent intentTransportation = new Intent(TransportationActivity.this, HomeActivity.class);
-                startActivity(intentTransportation);
+            case R.id.menuitem_transportation:
+
                 return true;
             case R.id.menuitem_logout:
                 Intent intentLogout = new Intent(TransportationActivity.this, MainActivity.class);
@@ -102,8 +175,10 @@ public class TransportationActivity extends Activity implements View.OnClickList
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                             transport findTransport = dataSnapshot.getValue(transport.class);
-                            textViewTransportation.setText("You have a " + findTransport.Type + " on " + findTransport.Date + " at " + findTransport.Time);
-
+                            textViewType.setText(findTransport.Type);
+                            textViewDate.setText(findTransport.Date);
+                            textViewTime.setText(findTransport.Time);
+                            textViewNumber.setText(findTransport.Number);
                         }
 
                         @Override
@@ -127,9 +202,11 @@ public class TransportationActivity extends Activity implements View.OnClickList
                         }
                     });
                 } else {
-                    textViewTransportation.setText("There is no transportation on that day");
+                    textViewType.setText("No transportation on that day");
+                    textViewDate.setText("");
+                    textViewTime.setText("");
+                    textViewNumber.setText("");
                 }
-
 
             }
 
